@@ -17,6 +17,6 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./"
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "webpack.config.js"],
   "include": ["**/*.ts", "**/*.tsx"]
 }
