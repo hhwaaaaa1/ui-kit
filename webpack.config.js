@@ -4,8 +4,11 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
   entry: {
-    main: "./src/app.ts",
+    main: "./src/index.tsx",
   },
   output: {
     filename: "[name].js",
@@ -31,11 +34,21 @@ module.exports = {
                 },
               },
             ],
-            "@babel/preset-react",
+            [
+              "@babel/preset-react",
+              {
+                runtime: "automatic",
+              },
+            ],
           ],
         },
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin({})],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
 };
