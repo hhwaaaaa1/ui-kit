@@ -11,5 +11,27 @@ module.exports = {
     filename: "[name].js",
     path: path.resolve("./dist"),
   },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: "/node_modules",
+        loader: "babel-loader",
+        options: {
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                targets: {
+                  browsers: ["last 2 versions"],
+                },
+              },
+            ],
+            "@babel/preset-react",
+          ],
+        },
+      },
+    ],
+  },
   plugins: [new CleanWebpackPlugin(), new HtmlWebpackPlugin({})],
 };
